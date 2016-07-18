@@ -6,35 +6,60 @@ var __extends = (this && this.__extends) || function (d, b) {
 var objects;
 (function (objects) {
     /**
-     * This is the Ocean object used in the game
+     * This is the Island object used in the game
      *
      * @export
-     * @class Ocean
+     * @class Island
      * @extends {createjs.Bitmap}
      */
-    var Ocean = (function (_super) {
-        __extends(Ocean, _super);
+    var Island = (function (_super) {
+        __extends(Island, _super);
         // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
-         * Creates an instance of Ocean.
+         * Creates an instance of Island.
          *
          * @constructor
          * @param {string} imageString
          */
-        function Ocean(imageString) {
+        function Island(imageString) {
             _super.call(this, core.assets.getResult(imageString));
             this.start();
         }
+        Object.defineProperty(Island.prototype, "width", {
+            // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
+            get: function () {
+                return this._width;
+            },
+            set: function (newWidth) {
+                this._width = newWidth;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(Island.prototype, "height", {
+            get: function () {
+                return this._height;
+            },
+            set: function (newHeight) {
+                this._height = newHeight;
+            },
+            enumerable: true,
+            configurable: true
+        });
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         /**
          * Resets the objects outside of the viewport
+         * and sets the x and y locations
          *
          * @private
          * @method _reset
          * @returns {void}
          */
-        Ocean.prototype._reset = function () {
-            this.y = -960;
+        Island.prototype._reset = function () {
+            this.y = -this.height;
+            // get a random x location
+            this.x = Math.floor((Math.random() * (640 - (this.width * 0.5))) + (this.width * 0.5));
+            // math.floor gives us solid integer
         };
         /**
          * This method checks if the object has reached its boundaries
@@ -43,8 +68,8 @@ var objects;
          * @method _checkBounds
          * @returns {void}
          */
-        Ocean.prototype._checkBounds = function () {
-            if (this.y >= 0) {
+        Island.prototype._checkBounds = function () {
+            if (this.y >= (480 + (this.height * 0.5))) {
                 this._reset();
             }
         };
@@ -57,7 +82,11 @@ var objects;
          * @method start
          * @returns {void}
          */
-        Ocean.prototype.start = function () {
+        Island.prototype.start = function () {
+            this.width = this.getBounds().width;
+            this.height = this.getBounds().height;
+            this.regX = this.width * 0.5;
+            this.regY = this.height * 0.5;
             this._reset();
             this._dy = 5; // 5px per frame down
         };
@@ -69,12 +98,12 @@ var objects;
          * @method update
          * @returns {void}
          */
-        Ocean.prototype.update = function () {
+        Island.prototype.update = function () {
             this.y += this._dy;
             this._checkBounds();
         };
-        return Ocean;
+        return Island;
     }(createjs.Bitmap));
-    objects.Ocean = Ocean;
+    objects.Island = Island;
 })(objects || (objects = {}));
-//# sourceMappingURL=ocean.js.map
+//# sourceMappingURL=island.js.map
