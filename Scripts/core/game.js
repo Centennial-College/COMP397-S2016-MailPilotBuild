@@ -25,7 +25,8 @@ var core;
         { id: "nextButton", src: "../../Assets/images/nextButton.png" },
         { id: "exitButton", src: "../../Assets/images/exitButton.png" },
         { id: "ocean", src: "../../Assets/images/ocean.gif" },
-        { id: "island", src: "../../Assets/images/island.png" }
+        { id: "island", src: "../../Assets/images/island.png" },
+        { id: "plane", src: "../../Assets/images/plane.png" }
     ];
     /**
      * This method preloads assets for the game

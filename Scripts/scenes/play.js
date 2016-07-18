@@ -22,6 +22,8 @@ var scenes;
             this.addChild(this._ocean);
             this._island = new objects.Island("island");
             this.addChild(this._island);
+            this._player = new objects.Player("plane");
+            this.addChild(this._player);
             // add this scene to the global scene container
             core.stage.addChild(this);
         };
@@ -29,6 +31,7 @@ var scenes;
             // scene updates happen here...
             this._ocean.update();
             this._island.update();
+            this._player.update();
         };
         // EVENT HANDLERS ++++++++++++++++
         Play.prototype._startButtonClick = function (event) {
