@@ -18,19 +18,14 @@ var scenes;
          *
          */
         Play.prototype.Start = function () {
-            // Add Menu Label
-            this._playLabel = new objects.Label("PLAY SCENE", "60px", "Consolas", "#000000", 320, 240);
-            this.addChild(this._playLabel);
-            // add the start button
-            this._nextButton = new objects.Button("nextButton", 320, 420, true);
-            this.addChild(this._nextButton);
-            // Start button event listener
-            this._nextButton.on("click", this._startButtonClick, this);
+            this._ocean = new objects.Ocean("ocean");
+            this.addChild(this._ocean);
             // add this scene to the global scene container
             core.stage.addChild(this);
         };
         Play.prototype.Update = function () {
             // scene updates happen here...
+            this._ocean.update();
         };
         // EVENT HANDLERS ++++++++++++++++
         Play.prototype._startButtonClick = function (event) {
