@@ -4,7 +4,7 @@ module scenes {
         private _ocean: objects.Ocean;
         private _island: objects.Island;
         private _player: objects.Player;
-        private _cloud: objects.Cloud;
+        private _clouds: objects.Cloud[];
 
         /**
          * Creates an instance of Menu.
@@ -30,9 +30,13 @@ module scenes {
             this._player = new objects.Player("plane");
             this.addChild(this._player);
 
-            // cloud object
-            this._cloud = new objects.Cloud("cloud");
-            this.addChild(this._cloud);
+            // clouds array
+            this._clouds = new Array<objects.Cloud>();
+            for (let count = 0; count < 3; count++) {
+                // this._clouds[count] = new objects.Cloud("cloud");
+                this._clouds.push(new objects.Cloud("cloud")); // same as above; diff notation
+                this.addChild(this._clouds[count]);
+            }
 
             // add this scene to the global scene container
             core.stage.addChild(this);
@@ -43,7 +47,12 @@ module scenes {
             this._ocean.update();
             this._island.update();
             this._player.update();
-            this._cloud.update();
+
+            // update each cloud
+            this._clouds.forEach(cloud => {
+                cloud.update();
+            });
+
         }
 
         // EVENT HANDLERS ++++++++++++++++
