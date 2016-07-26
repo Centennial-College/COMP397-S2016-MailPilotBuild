@@ -10,10 +10,11 @@ var objects;
      *
      * @export
      * @class Island
-     * @extends {createjs.Bitmap}
+     * @extends {objects.GameObject}
      */
     var Island = (function (_super) {
         __extends(Island, _super);
+        // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
          * Creates an instance of Island.
@@ -22,30 +23,9 @@ var objects;
          * @param {string} imageString
          */
         function Island(imageString) {
-            _super.call(this, core.assets.getResult(imageString));
+            _super.call(this, imageString);
             this.start();
         }
-        Object.defineProperty(Island.prototype, "width", {
-            // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
-            get: function () {
-                return this._width;
-            },
-            set: function (newWidth) {
-                this._width = newWidth;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(Island.prototype, "height", {
-            get: function () {
-                return this._height;
-            },
-            set: function (newHeight) {
-                this._height = newHeight;
-            },
-            enumerable: true,
-            configurable: true
-        });
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         /**
          * Resets the objects outside of the viewport
@@ -83,10 +63,6 @@ var objects;
          * @returns {void}
          */
         Island.prototype.start = function () {
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
             this._reset();
             this._dy = 5; // 5px per frame down
         };
@@ -100,10 +76,11 @@ var objects;
          */
         Island.prototype.update = function () {
             this.y += this._dy;
+            this.position = new objects.Vector2(this.x, this.y);
             this._checkBounds();
         };
         return Island;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Island = Island;
 })(objects || (objects = {}));
 //# sourceMappingURL=island.js.map

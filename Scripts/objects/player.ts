@@ -1,25 +1,15 @@
 module objects {
-    export class Player extends createjs.Bitmap {
+    /**
+     * This is the Playe object used in the game 
+     * 
+     * @export
+     * @class Player
+     * @extends {objects.GameObject}
+     */
+    export class Player extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++++++++++++++
-        private _width: number;
-        private _height: number;
 
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
-        get width(): number {
-            return this._width;
-        }
-
-        set width(newWidth: number) {
-            this._width = newWidth;
-        }
-
-        get height(): number {
-            return this._height;
-        }
-
-        set height(newHeight: number) {
-            this._height = newHeight;
-        }
 
         // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -29,7 +19,7 @@ module objects {
          * @param {string} imageString
          */
         constructor(imageString: string) {
-            super(core.assets.getResult(imageString));
+            super(imageString);
 
             this.start();
         }
@@ -66,11 +56,6 @@ module objects {
          * @returns {void} 
          */
         public start(): void {
-            // set the y value to be fixed
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
             this.y = 430;
         }
 
@@ -86,6 +71,7 @@ module objects {
             // player to follow mouse
             this.x = core.stage.mouseX;
             this._checkBounds();
+            this.position = new Vector2(this.x, this.y);
         }
     }
 }

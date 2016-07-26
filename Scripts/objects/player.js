@@ -5,8 +5,17 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var objects;
 (function (objects) {
+    /**
+     * This is the Playe object used in the game
+     *
+     * @export
+     * @class Player
+     * @extends {objects.GameObject}
+     */
     var Player = (function (_super) {
         __extends(Player, _super);
+        // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++++++++++++++
+        // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
          * Creates an instance of Player.
@@ -15,30 +24,9 @@ var objects;
          * @param {string} imageString
          */
         function Player(imageString) {
-            _super.call(this, core.assets.getResult(imageString));
+            _super.call(this, imageString);
             this.start();
         }
-        Object.defineProperty(Player.prototype, "width", {
-            // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
-            get: function () {
-                return this._width;
-            },
-            set: function (newWidth) {
-                this._width = newWidth;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(Player.prototype, "height", {
-            get: function () {
-                return this._height;
-            },
-            set: function (newHeight) {
-                this._height = newHeight;
-            },
-            enumerable: true,
-            configurable: true
-        });
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         /**
         * This method checks if the object has reached its boundaries
@@ -68,11 +56,6 @@ var objects;
          * @returns {void}
          */
         Player.prototype.start = function () {
-            // set the y value to be fixed
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
             this.y = 430;
         };
         /**
@@ -87,9 +70,10 @@ var objects;
             // player to follow mouse
             this.x = core.stage.mouseX;
             this._checkBounds();
+            this.position = new objects.Vector2(this.x, this.y);
         };
         return Player;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Player = Player;
 })(objects || (objects = {}));
 //# sourceMappingURL=player.js.map

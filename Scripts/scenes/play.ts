@@ -32,7 +32,7 @@ module scenes {
 
             // clouds array
             this._clouds = new Array<objects.Cloud>();
-            for (let count = 0; count < 3; count++) {
+            for (let count: number = 0; count < 3; count++) {
                 // this._clouds[count] = new objects.Cloud("cloud");
                 this._clouds.push(new objects.Cloud("cloud")); // same as above; diff notation
                 this.addChild(this._clouds[count]);

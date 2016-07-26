@@ -10,10 +10,11 @@ var objects;
      *
      * @export
      * @class Cloud
-     * @extends {createjs.Bitmap}
+     * @extends {objects.GameObject}
      */
     var Cloud = (function (_super) {
         __extends(Cloud, _super);
+        // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
          * Creates an instance of Cloud.
@@ -22,30 +23,9 @@ var objects;
          * @param {string} imageString
          */
         function Cloud(imageString) {
-            _super.call(this, core.assets.getResult(imageString));
+            _super.call(this, imageString);
             this.start();
         }
-        Object.defineProperty(Cloud.prototype, "width", {
-            // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
-            get: function () {
-                return this._width;
-            },
-            set: function (newWidth) {
-                this._width = newWidth;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        Object.defineProperty(Cloud.prototype, "height", {
-            get: function () {
-                return this._height;
-            },
-            set: function (newHeight) {
-                this._height = newHeight;
-            },
-            enumerable: true,
-            configurable: true
-        });
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         /**
          * Resets the objects outside of the viewport
@@ -85,10 +65,6 @@ var objects;
          * @returns {void}
          */
         Cloud.prototype.start = function () {
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
             this._reset();
         };
         /**
@@ -102,10 +78,11 @@ var objects;
         Cloud.prototype.update = function () {
             this.y += this._dy;
             this.x += this._dx;
+            this.position = new objects.Vector2(this.x, this.y);
             this._checkBounds();
         };
         return Cloud;
-    }(createjs.Bitmap));
+    }(objects.GameObject));
     objects.Cloud = Cloud;
 })(objects || (objects = {}));
 //# sourceMappingURL=cloud.js.map
