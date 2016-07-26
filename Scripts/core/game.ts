@@ -33,10 +33,10 @@ namespace core {
     let over: scenes.Over;
     let play: scenes.Play;
 
-    
+
 
     // asset manifest for images and sounds
-    let assetData:objects.Asset[] = [
+    let assetData: objects.Asset[] = [
         { id: "startButton", src: "../../Assets/images/startButton.png" },
         { id: "restartButton", src: "../../Assets/images/restartButton.png" },
         { id: "nextButton", src: "../../Assets/images/nextButton.png" },
@@ -44,7 +44,10 @@ namespace core {
         { id: "ocean", src: "../../Assets/images/ocean.gif" },
         { id: "island", src: "../../Assets/images/island.png" },
         { id: "plane", src: "../../Assets/images/plane.png" },
-        { id: "cloud", src: "../../Assets/images/cloud.png" }
+        { id: "cloud", src: "../../Assets/images/cloud.png" },
+        { id: "thunder", src: "../../Assets/audio/thunder.ogg" },
+        { id: "yay", src: "../../Assets/audio/yay.ogg" },
+        { id: "engine", src: "../../Assets/audio/engine.ogg" }
     ];
 
     /**

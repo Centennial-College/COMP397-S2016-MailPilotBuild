@@ -5,6 +5,7 @@ module scenes {
         private _island: objects.Island;
         private _player: objects.Player;
         private _clouds: objects.Cloud[];
+        private _collision: managers.Collision;
 
         /**
          * Creates an instance of Menu.
@@ -30,6 +31,9 @@ module scenes {
             this._player = new objects.Player("plane");
             this.addChild(this._player);
 
+            // include a collision manager 
+            this._collision = new managers.Collision();
+
             // clouds array
             this._clouds = new Array<objects.Cloud>();
             for (let count: number = 0; count < 3; count++) {
@@ -47,10 +51,12 @@ module scenes {
             this._ocean.update();
             this._island.update();
             this._player.update();
+            this._collision.check(this._player, this._island);
 
             // update each cloud
             this._clouds.forEach(cloud => {
                 cloud.update();
+                this._collision.check(this._player, cloud);
             });
 
         }

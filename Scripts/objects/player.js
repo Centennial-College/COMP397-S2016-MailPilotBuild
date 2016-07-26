@@ -14,8 +14,6 @@ var objects;
      */
     var Player = (function (_super) {
         __extends(Player, _super);
-        // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++++++++++++++
-        // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
         // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
          * Creates an instance of Player.
@@ -27,6 +25,17 @@ var objects;
             _super.call(this, imageString);
             this.start();
         }
+        Object.defineProperty(Player.prototype, "sound", {
+            // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
+            get: function () {
+                return this._sound;
+            },
+            set: function (newSound) {
+                this._sound = newSound;
+            },
+            enumerable: true,
+            configurable: true
+        });
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         /**
         * This method checks if the object has reached its boundaries
@@ -56,6 +65,10 @@ var objects;
          * @returns {void}
          */
         Player.prototype.start = function () {
+            // when we do createjs.Sound.play() we are creating a sound object
+            this.sound = createjs.Sound.play("engine");
+            this.sound.loop = -1; // loop forever
+            this.sound.volume = 0.7;
             this.y = 430;
         };
         /**

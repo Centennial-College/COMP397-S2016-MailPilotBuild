@@ -23,7 +23,7 @@ var objects;
          */
         function GameObject(imageString) {
             _super.call(this, core.assets.getResult(imageString));
-            this._initialize();
+            this._initialize(imageString);
             this.start();
         }
         Object.defineProperty(GameObject.prototype, "width", {
@@ -43,6 +43,20 @@ var objects;
             },
             set: function (newHeight) {
                 this._height = newHeight;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(GameObject.prototype, "halfHeight", {
+            get: function () {
+                return this._height * 0.5;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(GameObject.prototype, "halfWidth", {
+            get: function () {
+                return this._width * 0.5;
             },
             enumerable: true,
             configurable: true
@@ -67,13 +81,24 @@ var objects;
             enumerable: true,
             configurable: true
         });
-        GameObject.prototype._initialize = function () {
+        Object.defineProperty(GameObject.prototype, "isColliding", {
+            get: function () {
+                return this._isColliding;
+            },
+            set: function (newState) {
+                this._isColliding = newState;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        GameObject.prototype._initialize = function (imageString) {
+            this.name = imageString;
             this.width = this.getBounds().width;
-            console.log("width: " + this.width);
             this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            this.regX = this.halfWidth;
+            this.regY = this.halfHeight;
             this.position = new objects.Vector2(this.x, this.y);
+            this.isColliding = false;
         };
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         /**

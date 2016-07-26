@@ -27,6 +27,8 @@ var scenes;
             // player object
             this._player = new objects.Player("plane");
             this.addChild(this._player);
+            // include a collision manager 
+            this._collision = new managers.Collision();
             // clouds array
             this._clouds = new Array();
             for (var count = 0; count < 3; count++) {
@@ -38,13 +40,16 @@ var scenes;
             core.stage.addChild(this);
         };
         Play.prototype.Update = function () {
+            var _this = this;
             // scene updates happen here...
             this._ocean.update();
             this._island.update();
             this._player.update();
+            this._collision.check(this._player, this._island);
             // update each cloud
             this._clouds.forEach(function (cloud) {
                 cloud.update();
+                _this._collision.check(_this._player, cloud);
             });
         };
         // EVENT HANDLERS ++++++++++++++++

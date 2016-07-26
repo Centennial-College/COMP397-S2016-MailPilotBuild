@@ -8,8 +8,16 @@ module objects {
      */
     export class Player extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES ++++++++++++++++++++++++++++++++++++++++
+        private _sound: createjs.AbstractSoundInstance;
 
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
+        get sound(): createjs.AbstractSoundInstance {
+            return this._sound;
+        }
+
+        set sound(newSound: createjs.AbstractSoundInstance) {
+            this._sound = newSound;
+        }
 
         // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -56,6 +64,10 @@ module objects {
          * @returns {void} 
          */
         public start(): void {
+            // when we do createjs.Sound.play() we are creating a sound object
+            this.sound = createjs.Sound.play("engine");
+            this.sound.loop = -1; // loop forever
+            this.sound.volume = 0.7;
             this.y = 430;
         }
 
