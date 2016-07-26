@@ -1,6 +1,7 @@
 module scenes {
     export class Menu extends objects.Scene {
         //  PRIVATE INSTANCE VARIABLES
+        private _ocean: objects.Ocean;
         private _menuLabel: objects.Label;
         private _startButton: objects.Button;
 
@@ -15,12 +16,16 @@ module scenes {
         /**
          * 
          */
-        public Start():void {
+        public Start(): void {
+            // Add Ocean Background
+            this._ocean = new objects.Ocean("ocean");
+            this.addChild(this._ocean);
+
             // Add Menu Label
             this._menuLabel = new objects.Label(
-                "MENU SCENE", "60px","Consolas", "#000000",
-                320, 240
-                );
+                "MAIL PILOT", "60px", "Consolas", "#FF0",
+                320, 240, true
+            );
             this.addChild(this._menuLabel);
 
             // add the start button
@@ -36,13 +41,14 @@ module scenes {
             core.stage.addChild(this);
         }
 
-        public Update():void {
+        public Update(): void {
             // scene updates happen here...
+            this._ocean.update();
         }
 
         // EVENT HANDLERS ++++++++++++++++
 
-        private _startButtonClick(event:createjs.MouseEvent):void {
+        private _startButtonClick(event: createjs.MouseEvent): void {
             // Switch the scene
             core.scene = config.Scene.PLAY;
             core.changeScene();

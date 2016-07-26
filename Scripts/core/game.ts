@@ -21,6 +21,11 @@ namespace core {
     // create a reference to a stage container
     export let stage: createjs.Stage;
 
+    // score and lives variables
+    export let score: number = 0;
+    export let highSchore: number = 0;
+    export let lives: number = 5;
+
     let helloLabel: objects.Label;
 
     let startButton: objects.Button; // reference to our button class

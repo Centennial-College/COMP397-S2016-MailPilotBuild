@@ -24,7 +24,6 @@ var objects;
          */
         function Cloud(imageString) {
             _super.call(this, imageString);
-            this.start();
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         /**

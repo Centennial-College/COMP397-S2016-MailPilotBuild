@@ -24,7 +24,6 @@ var objects;
          */
         function Island(imageString) {
             _super.call(this, imageString);
-            this.start();
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         /**

@@ -22,8 +22,6 @@ module objects {
          */
         constructor(imageString: string) {
             super(imageString);
-
-            this.start();
         }
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++        

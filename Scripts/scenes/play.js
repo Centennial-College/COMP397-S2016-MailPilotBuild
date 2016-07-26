@@ -36,8 +36,17 @@ var scenes;
                 this._clouds.push(new objects.Cloud("cloud")); // same as above; diff notation
                 this.addChild(this._clouds[count]);
             }
+            // add lives and score label
+            this._livesLabel = new objects.Label("Lives: " + core.lives, "40px", "Consolas", "#FF0", 10, 5, false);
+            this.addChild(this._livesLabel);
+            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#FF0", 350, 5, false);
+            this.addChild(this._scoreLabel);
             // add this scene to the global scene container
             core.stage.addChild(this);
+        };
+        Play.prototype._updateScoreBoard = function () {
+            this._livesLabel.text = "Lives: " + core.lives;
+            this._scoreLabel.text = "Score: " + core.score;
         };
         Play.prototype.Update = function () {
             var _this = this;
@@ -51,6 +60,13 @@ var scenes;
                 cloud.update();
                 _this._collision.check(_this._player, cloud);
             });
+            this._updateScoreBoard();
+            if (core.lives < 1) {
+                this._player.sound.loop = 0;
+                this._player.sound.stop();
+                core.scene = config.Scene.OVER;
+                core.changeScene();
+            }
         };
         // EVENT HANDLERS ++++++++++++++++
         Play.prototype._startButtonClick = function (event) {

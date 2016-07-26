@@ -13,6 +13,7 @@ module objects {
         private _name: string;
         private _position: Vector2;
         private _isColliding: boolean;
+        public sound: createjs.AbstractSoundInstance;
 
         // PUBLIC PROPERTIES +++++++++++++++++++++++++++++++++++++++++++++++++
         get width(): number {
