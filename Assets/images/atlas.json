@@ -1,0 +1,26 @@
+{
+
+"images": [
+    "../../Assets/images/atlas.png"
+],
+
+"frames": [
+    [1, 1, 200, 50, 0, 0, 0],
+    [1, 53, 200, 50, 0, 0, 0],
+    [1, 105, 200, 50, 0, 0, 0],
+    [1, 157, 200, 50, 0, 0, 0],
+    [1, 209, 62, 51, 0, -3, -9],
+    [65, 209, 62, 62, 0, 0, 0],
+    [1, 273, 226, 178, 0, 0, 0]
+],
+
+"animations": {
+    "exitButton": { "frames": [0] },
+    "nextButton": { "frames": [1] },
+    "restartButton": { "frames": [2] },
+    "startButton": { "frames": [3] },
+    "plane": { "frames": [4] },
+    "island": { "frames": [5] },
+    "cloud": { "frames": [6] }
+}
+}
