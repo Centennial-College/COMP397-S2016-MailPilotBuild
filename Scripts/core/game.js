@@ -58,23 +58,29 @@ var core;
                 core.assets.getResult("textureAtlas")
             ],
             "frames": [
-                [1, 1, 200, 50, 0, 0, 0],
-                [1, 53, 200, 50, 0, 0, 0],
-                [1, 105, 200, 50, 0, 0, 0],
-                [1, 157, 200, 50, 0, 0, 0],
-                [1, 209, 62, 51, 0, -3, -9],
-                [65, 209, 62, 62, 0, 0, 0],
-                [1, 273, 226, 178, 0, 0, 0]
+                [1, 1, 226, 178, 0, 0, 0],
+                [1, 181, 62, 62, 0, 0, 0],
+                [65, 181, 62, 51, 0, -3, -9],
+                [65, 181, 62, 51, 0, -3, -9],
+                [129, 181, 62, 51, 0, -3, -9],
+                [193, 181, 62, 51, 0, -3, -9],
+                [257, 1, 200, 50, 0, 0, 0],
+                [257, 53, 200, 50, 0, 0, 0],
+                [229, 105, 200, 50, 0, 0, 0],
+                [257, 157, 200, 50, 0, 0, 0]
             ],
             "animations": {
-                "exitButton": { "frames": [0] },
-                "nextButton": { "frames": [1] },
-                "restartButton": { "frames": [2] },
-                "startButton": { "frames": [3] },
-                "plane": { "frames": [4] },
-                "island": { "frames": [5] },
-                "cloud": { "frames": [6] }
-            }
+                "cloud": { "frames": [0] },
+                "island": { "frames": [1] },
+                "plane": {
+                    "frames": [4, 5, 3],
+                    "speed": 0.5
+                },
+                "exitButton": { "frames": [6] },
+                "nextButton": { "frames": [7] },
+                "restartButton": { "frames": [8] },
+                "startButton": { "frames": [9] }
+            },
         };
         // added textureAtlas
         core.textureAtlas = new createjs.SpriteSheet(atlasData);

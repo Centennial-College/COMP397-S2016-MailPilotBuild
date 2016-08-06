@@ -1,26 +1,38 @@
 {
 
 "images": [
-    "../../Assets/images/atlas.png"
+    "atlas.png"
 ],
 
 "frames": [
-    [1, 1, 200, 50, 0, 0, 0],
-    [1, 53, 200, 50, 0, 0, 0],
-    [1, 105, 200, 50, 0, 0, 0],
-    [1, 157, 200, 50, 0, 0, 0],
-    [1, 209, 62, 51, 0, -3, -9],
-    [65, 209, 62, 62, 0, 0, 0],
-    [1, 273, 226, 178, 0, 0, 0]
+    [1, 1, 226, 178, 0, 0, 0],
+    [1, 181, 62, 62, 0, 0, 0],
+    [65, 181, 62, 51, 0, -3, -9],
+    [65, 181, 62, 51, 0, -3, -9],
+    [129, 181, 62, 51, 0, -3, -9],
+    [193, 181, 62, 51, 0, -3, -9],
+    [257, 1, 200, 50, 0, 0, 0],
+    [257, 53, 200, 50, 0, 0, 0],
+    [229, 105, 200, 50, 0, 0, 0],
+    [257, 157, 200, 50, 0, 0, 0]
 ],
 
 "animations": {
-    "exitButton": { "frames": [0] },
-    "nextButton": { "frames": [1] },
-    "restartButton": { "frames": [2] },
-    "startButton": { "frames": [3] },
-    "plane": { "frames": [4] },
-    "island": { "frames": [5] },
-    "cloud": { "frames": [6] }
-}
+    "cloud": { "frames": [0] },
+    "island": { "frames": [1] },
+    "plane": { "frames": [2] },
+    "plane3": { "frames": [3] },
+    "plane1": { "frames": [4] },
+    "plane2": { "frames": [5] },
+    "exitButton": { "frames": [6] },
+    "nextButton": { "frames": [7] },
+    "restartButton": { "frames": [8] },
+    "startButton": { "frames": [9] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:6779b81175dd498254900b74cdd45f66:d437f99c09aed97ac4fc45d811684ac7:cbce6b53f0f49e0bf15173c25c41f876$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
 }
