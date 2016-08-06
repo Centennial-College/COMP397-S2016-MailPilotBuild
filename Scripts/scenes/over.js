@@ -22,10 +22,10 @@ var scenes;
             this._ocean = new objects.Ocean("ocean");
             this.addChild(this._ocean);
             // Add Game Over Label
-            this._gameOverLabel = new objects.Label("GAME OVER", "60px", "Consolas", "#FF0", 320, 180, true);
+            this._gameOverLabel = new objects.Label("GAME OVER", "60px", "Dock51", "#FF0", 320, 180, true);
             this.addChild(this._gameOverLabel);
             // add the score label
-            this._finalScoreLabel = new objects.Label("SCORE: " + core.score, "60px", "Consolas", "#FF0", 320, 240, true);
+            this._finalScoreLabel = new objects.Label("SCORE: " + core.score, "60px", "Dock51", "#FF0", 320, 240, true);
             this.addChild(this._finalScoreLabel);
             // add the start button
             this._restartButton = new objects.Button("restartButton", 320, 420, true);

@@ -45,10 +45,10 @@ module scenes {
             }
 
             // add lives and score label
-            this._livesLabel = new objects.Label("Lives: " + core.lives, "40px", "Consolas", "#FF0", 10, 5, false);
+            this._livesLabel = new objects.Label("Lives: " + core.lives, "40px", "Dock51", "#FF0", 10, 5, false);
             this.addChild(this._livesLabel);
 
-            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Consolas", "#FF0", 350, 5, false);
+            this._scoreLabel = new objects.Label("Score: " + core.score, "40px", "Dock51", "#FF0", 350, 5, false);
             this.addChild(this._scoreLabel);
 
             // add this scene to the global scene container

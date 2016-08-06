@@ -24,14 +24,14 @@ module scenes {
 
             // Add Game Over Label
             this._gameOverLabel = new objects.Label(
-                "GAME OVER", "60px", "Consolas", "#FF0",
+                "GAME OVER", "60px", "Dock51", "#FF0",
                 320, 180, true
             );
             this.addChild(this._gameOverLabel);
 
             // add the score label
             this._finalScoreLabel = new objects.Label(
-                "SCORE: " + core.score, "60px", "Consolas", "#FF0",
+                "SCORE: " + core.score, "60px", "Dock51", "#FF0",
                 320, 240, true
             );
             this.addChild(this._finalScoreLabel);
