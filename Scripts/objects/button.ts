@@ -19,9 +19,9 @@ module objects {
      * 
      * @export
      * @class Button
-     * @extends {createjs.Bitmap}
+     * @extends {createjs.Sprite}
      */
-    export class Button extends createjs.Bitmap {
+    export class Button extends createjs.Sprite {
 
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         /**
@@ -33,11 +33,11 @@ module objects {
          * @param {number} y
          * @param {boolean} isCentered
          */
-        constructor(imageString: string, x:number, y:number, isCentered:boolean) {
-            super(core.assets.getResult(imageString));
+        constructor(imageString: string, x: number, y: number, isCentered: boolean) {
+            super(core.textureAtlas, imageString);
 
             // Check if user wants to change regX and regY values to the center 
-            if(isCentered) {
+            if (isCentered) {
                 this.regX = this.getBounds().width * 0.5;
                 this.regY = this.getBounds().height * 0.5;
             }
@@ -59,7 +59,7 @@ module objects {
          * @method _mouseOver
          * @param {createjs.MouseEvent} event
          */
-        private _mouseOver(event:createjs.MouseEvent):void {
+        private _mouseOver(event: createjs.MouseEvent): void {
             this.alpha = 0.7;
         }
 
@@ -70,7 +70,7 @@ module objects {
          * @method _mouseOut
          * @param {createjs.MouseEvent} event
          */
-        private _mouseOut(event:createjs.MouseEvent):void {
+        private _mouseOut(event: createjs.MouseEvent): void {
             this.alpha = 1.0;
         }
     }

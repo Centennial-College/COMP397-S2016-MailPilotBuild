@@ -24,14 +24,8 @@ var core;
     var play;
     // asset manifest for images and sounds
     var assetData = [
-        { id: "startButton", src: "../../Assets/images/startButton.png" },
-        { id: "restartButton", src: "../../Assets/images/restartButton.png" },
-        { id: "nextButton", src: "../../Assets/images/nextButton.png" },
-        { id: "exitButton", src: "../../Assets/images/exitButton.png" },
         { id: "ocean", src: "../../Assets/images/ocean.gif" },
-        { id: "island", src: "../../Assets/images/island.png" },
-        { id: "plane", src: "../../Assets/images/plane.png" },
-        { id: "cloud", src: "../../Assets/images/cloud.png" },
+        { id: "textureAtlas", src: "../../Assets/images/atlas.png" },
         { id: "thunder", src: "../../Assets/audio/thunder.ogg" },
         { id: "yay", src: "../../Assets/audio/yay.ogg" },
         { id: "engine", src: "../../Assets/audio/engine.ogg" }
@@ -59,6 +53,31 @@ var core;
         core.stage.enableMouseOver(20);
         createjs.Ticker.framerate = 60;
         createjs.Ticker.on("tick", gameLoop); // create an event listener for the tick event
+        var atlasData = {
+            "images": [
+                core.assets.getResult("textureAtlas")
+            ],
+            "frames": [
+                [1, 1, 200, 50, 0, 0, 0],
+                [1, 53, 200, 50, 0, 0, 0],
+                [1, 105, 200, 50, 0, 0, 0],
+                [1, 157, 200, 50, 0, 0, 0],
+                [1, 209, 62, 51, 0, -3, -9],
+                [65, 209, 62, 62, 0, 0, 0],
+                [1, 273, 226, 178, 0, 0, 0]
+            ],
+            "animations": {
+                "exitButton": { "frames": [0] },
+                "nextButton": { "frames": [1] },
+                "restartButton": { "frames": [2] },
+                "startButton": { "frames": [3] },
+                "plane": { "frames": [4] },
+                "island": { "frames": [5] },
+                "cloud": { "frames": [6] }
+            }
+        };
+        // added textureAtlas
+        core.textureAtlas = new createjs.SpriteSheet(atlasData);
         // setup the default scene
         core.scene = config.Scene.MENU;
         changeScene();

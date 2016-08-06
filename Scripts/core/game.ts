@@ -18,7 +18,7 @@ namespace core {
     export let assets: createjs.LoadQueue;
 
     // declare textureAtlas
-    export let textureAtlas:createjs.SpriteSheet;
+    export let textureAtlas: createjs.SpriteSheet;
 
     // make a reference to the canvas element
     let canvas: HTMLElement = document.getElementById("canvas");
@@ -46,37 +46,13 @@ namespace core {
     // asset manifest for images and sounds
     let assetData: objects.Asset[] = [
         { id: "ocean", src: "../../Assets/images/ocean.gif" },
+        { id: "textureAtlas", src: "../../Assets/images/atlas.png" },
         { id: "thunder", src: "../../Assets/audio/thunder.ogg" },
         { id: "yay", src: "../../Assets/audio/yay.ogg" },
         { id: "engine", src: "../../Assets/audio/engine.ogg" }
     ];
 
-    let atlasData = {
 
-        "images": [
-            "../../Assets/images/atlas.png"
-        ],
-
-        "frames": [
-            [1, 1, 200, 50, 0, 0, 0],
-            [1, 53, 200, 50, 0, 0, 0],
-            [1, 105, 200, 50, 0, 0, 0],
-            [1, 157, 200, 50, 0, 0, 0],
-            [1, 209, 62, 51, 0, -3, -9],
-            [65, 209, 62, 62, 0, 0, 0],
-            [1, 273, 226, 178, 0, 0, 0]
-        ],
-
-        "animations": {
-            "exitButton": { "frames": [0] },
-            "nextButton": { "frames": [1] },
-            "restartButton": { "frames": [2] },
-            "startButton": { "frames": [3] },
-            "plane": { "frames": [4] },
-            "island": { "frames": [5] },
-            "cloud": { "frames": [6] }
-        }
-    }
 
 
     /**
@@ -104,8 +80,36 @@ namespace core {
         stage.enableMouseOver(20);
         createjs.Ticker.framerate = 60;
         createjs.Ticker.on("tick", gameLoop); // create an event listener for the tick event
-        
-        textureAtlas = new createjs.SpriteSheet(atlasData)
+
+        let atlasData = {
+
+            "images": [
+                assets.getResult("textureAtlas")
+            ],
+
+            "frames": [
+                [1, 1, 200, 50, 0, 0, 0],
+                [1, 53, 200, 50, 0, 0, 0],
+                [1, 105, 200, 50, 0, 0, 0],
+                [1, 157, 200, 50, 0, 0, 0],
+                [1, 209, 62, 51, 0, -3, -9],
+                [65, 209, 62, 62, 0, 0, 0],
+                [1, 273, 226, 178, 0, 0, 0]
+            ],
+
+            "animations": {
+                "exitButton": { "frames": [0] },
+                "nextButton": { "frames": [1] },
+                "restartButton": { "frames": [2] },
+                "startButton": { "frames": [3] },
+                "plane": { "frames": [4] },
+                "island": { "frames": [5] },
+                "cloud": { "frames": [6] }
+            }
+        }
+
+        // added textureAtlas
+        textureAtlas = new createjs.SpriteSheet(atlasData);
 
         // setup the default scene
         scene = config.Scene.MENU;
