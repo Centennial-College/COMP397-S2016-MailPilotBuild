@@ -66,8 +66,9 @@ var core;
                 [193, 181, 62, 51, 0, -3, -9],
                 [257, 1, 200, 50, 0, 0, 0],
                 [257, 53, 200, 50, 0, 0, 0],
-                [229, 105, 200, 50, 0, 0, 0],
-                [257, 157, 200, 50, 0, 0, 0]
+                [257, 105, 200, 50, 0, 0, 0],
+                [257, 157, 200, 50, 0, 0, 0],
+                [229, 1, 16, 16, 0, 0, 0]
             ],
             "animations": {
                 "cloud": { "frames": [0] },
@@ -79,7 +80,8 @@ var core;
                 "exitButton": { "frames": [6] },
                 "nextButton": { "frames": [7] },
                 "restartButton": { "frames": [8] },
-                "startButton": { "frames": [9] }
+                "startButton": { "frames": [9] },
+                "bullet": { "frames": [10] }
             },
         };
         // added textureAtlas
