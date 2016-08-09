@@ -24,9 +24,17 @@ var scenes;
             // island object
             this._island = new objects.Island("island");
             this.addChild(this._island);
+            // bullet array
+            this._bullets = new Array();
+            for (var bullet = 0; bullet < 10; bullet++) {
+                this._bullets.push(new objects.Bullet("bullet"));
+                this.addChild(this._bullets[bullet]);
+            }
             // player object
             this._player = new objects.Player("plane");
             this.addChild(this._player);
+            // TEST TEST TEST
+            this._bullets[0].Fire(this._player.position);
             // include a collision manager 
             this._collision = new managers.Collision();
             // clouds array
@@ -55,10 +63,21 @@ var scenes;
             this._island.update();
             this._player.update();
             this._collision.check(this._player, this._island);
-            // update each cloud
+            this._bullets.forEach(function (bullet) {
+                // update each bullet
+                bullet.update();
+            });
             this._clouds.forEach(function (cloud) {
+                // update each cloud
                 cloud.update();
+                // check collision with the player and each cloud
                 _this._collision.check(_this._player, cloud);
+            });
+            // checks collision with each cloud and each bullet
+            this._clouds.forEach(function (cloud) {
+                _this._bullets.forEach(function (bullet) {
+                    _this._collision.check(cloud, bullet);
+                });
             });
             this._updateScoreBoard();
             if (core.lives < 1) {

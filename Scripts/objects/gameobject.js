@@ -121,6 +121,14 @@ var objects;
         */
         GameObject.prototype.update = function () {
         };
+        /**
+         * This method resets the game object
+         * @public
+         * @method Reset
+         * @returns {void}
+         */
+        GameObject.prototype.Reset = function () {
+        };
         return GameObject;
     }(createjs.Sprite));
     objects.GameObject = GameObject;

@@ -112,5 +112,15 @@ module objects {
         public update(): void {
 
         }
+
+        /**
+         * This method resets the game object
+         * @public
+         * @method Reset
+         * @returns {void} 
+         */
+        public Reset(): void {
+
+        }
     }
 }
