@@ -13,6 +13,7 @@ var scenes;
          */
         function Play() {
             _super.call(this);
+            this._frameCount = 0;
         }
         /**
          *
@@ -33,8 +34,6 @@ var scenes;
             // player object
             this._player = new objects.Player("plane");
             this.addChild(this._player);
-            // TEST TEST TEST
-            this._bullets[0].Fire(this._player.position);
             // include a collision manager 
             this._collision = new managers.Collision();
             // clouds array
@@ -44,6 +43,7 @@ var scenes;
                 this._clouds.push(new objects.Cloud("cloud")); // same as above; diff notation
                 this.addChild(this._clouds[count]);
             }
+            this._keyboardControls = new objects.KeyboardControls();
             // add lives and score label
             this._livesLabel = new objects.Label("Lives: " + core.lives, "40px", "Dock51", "#FF0", 10, 5, false);
             this.addChild(this._livesLabel);
@@ -59,6 +59,7 @@ var scenes;
         Play.prototype.Update = function () {
             var _this = this;
             // scene updates happen here...
+            this._frameCount++;
             this._ocean.update();
             this._island.update();
             this._player.update();
@@ -79,6 +80,17 @@ var scenes;
                     _this._collision.check(cloud, bullet);
                 });
             });
+            // Check if spacebar is pushed
+            if (this._frameCount % 10 == 0) {
+                if (this._keyboardControls.fire) {
+                    for (var bullet in this._bullets) {
+                        if (!this._bullets[bullet].InFlight) {
+                            this._bullets[bullet].Fire(this._player.position);
+                            break;
+                        }
+                    }
+                }
+            }
             this._updateScoreBoard();
             if (core.lives < 1) {
                 this._player.sound.loop = 0;

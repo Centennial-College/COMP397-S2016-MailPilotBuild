@@ -83,7 +83,7 @@ module objects {
         public start(): void {
             // some position we can never get to in game
             this._defaultPosition = new Vector2(1000, 1000);
-            this.Speed = 5;
+            this.Speed = 10;
             this.Reset();
         }
 

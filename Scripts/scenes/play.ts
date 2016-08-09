@@ -9,6 +9,9 @@ module scenes {
         private _scoreLabel: objects.Label;
         private _livesLabel: objects.Label;
         private _bullets: objects.Bullet[];
+        
+        private _keyboardControls: objects.KeyboardControls;
+        private _frameCount: number = 0;
 
         /**
          * Creates an instance of Menu.
@@ -41,8 +44,6 @@ module scenes {
             this._player = new objects.Player("plane");
             this.addChild(this._player);
 
-            // TEST TEST TEST
-            this._bullets[0].Fire(this._player.position);
 
             // include a collision manager 
             this._collision = new managers.Collision();
@@ -54,6 +55,8 @@ module scenes {
                 this._clouds.push(new objects.Cloud("cloud")); // same as above; diff notation
                 this.addChild(this._clouds[count]);
             }
+
+            this._keyboardControls = new objects.KeyboardControls();
 
             // add lives and score label
             this._livesLabel = new objects.Label("Lives: " + core.lives, "40px", "Dock51", "#FF0", 10, 5, false);
@@ -73,6 +76,8 @@ module scenes {
 
         public Update(): void {
             // scene updates happen here...
+            this._frameCount++;
+
             this._ocean.update();
             this._island.update();
             this._player.update();
@@ -96,6 +101,19 @@ module scenes {
                     this._collision.check(cloud, bullet);
                 })
             });
+
+            // Check if spacebar is pushed
+            if (this._frameCount % 10 == 0) {
+                if (this._keyboardControls.fire) {
+
+                    for (let bullet in this._bullets) {
+                        if (!this._bullets[bullet].InFlight) {
+                            this._bullets[bullet].Fire(this._player.position)
+                            break;
+                        }
+                    }
+                }
+            }
 
             this._updateScoreBoard();
 
